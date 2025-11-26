@@ -6,6 +6,7 @@ import {
   updateApplicationStatus
 } from "../controllers/applicationController.js";
 import { authMiddleware, authorizeRoles } from "../middleware/authMiddleware.js";
+import { checkStatus } from "../controllers/applicationController.js";
 
 const router = express.Router();
 
@@ -46,7 +47,7 @@ router.get(
   "/check/:jobId",
   authMiddleware,
   authorizeRoles("jobseeker"),
-  getMyApplications
+  checkStatus
 );
 
 export default router;

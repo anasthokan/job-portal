@@ -94,3 +94,27 @@ export const updateApplicationStatus = async (req, res) => {
     res.status(500).json({ message: "Server Error", err });
   }
 };
+
+export const checkStatus = async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+    const userId = req.user.id;
+
+    const application = await Application.findOne({
+      job: jobId,
+      applicant: userId
+    });
+
+    if (!application) {
+      return res.json({ applied: false });
+    }
+
+    res.json({
+      applied: true,
+      status: application.status
+    });
+
+  } catch (err) {
+    res.status(500).json({ message: "Server error", err });
+  }
+};
