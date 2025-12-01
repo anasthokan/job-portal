@@ -20,43 +20,62 @@ export default function Navbar() {
 
           {token && (
             <>
+              {/* COMMON LINK FOR ALL */}
               <li className="nav-item">
                 <Link className="nav-link" to="/jobs">Jobs</Link>
               </li>
 
+              {/* JOB SEEKER LINKS */}
               {role === "jobseeker" && (
                 <li className="nav-item">
-                  <Link className="nav-link" to="/my-applications">My Applications</Link>
+                  <Link className="nav-link" to="/my-applications">
+                    My Applications
+                  </Link>
                 </li>
               )}
 
               {role === "employer" && (
-                <li className="nav-item">
-                  <Link className="nav-link" to="/post-job">Post Job</Link>
-                </li>
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/post-job">Post Job</Link>
+                  </li>
+
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/my-jobs">My Posted Jobs</Link>
+                  </li>
+                </>
               )}
 
+              {/* ADMIN LINK */}
               {role === "admin" && (
                 <li className="nav-item">
                   <Link className="nav-link" to="/admin">Admin</Link>
                 </li>
               )}
 
+              {/* PROFILE */}
               <li className="nav-item">
-                <Link className="nav-link" to="/profile">Profile</Link>
+                <Link className="nav-link" to="/profile">
+                  Profile
+                </Link>
               </li>
             </>
           )}
         </ul>
 
+        {/* AUTH BUTTONS */}
         {token ? (
           <button className="btn btn-outline-light" onClick={logout}>
             Logout
           </button>
         ) : (
           <>
-            <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-            <Link to="/register" className="btn btn-primary">Register</Link>
+            <Link to="/login" className="btn btn-outline-light me-2">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-primary">
+              Register
+            </Link>
           </>
         )}
       </div>

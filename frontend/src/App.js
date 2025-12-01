@@ -12,6 +12,8 @@ import Applicants from "./pages/Applicants";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Dashboard from "./pages/Dashboard";
+import EmployerJobs from "./pages/EmployerJobs";
+
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -40,6 +42,14 @@ function App() {
             <JobsList />
           </ProtectedRoute>
         } />
+
+        
+        <Route path="/my-jobs" element={
+          <ProtectedRoute role="employer">
+            <EmployerJobs />
+          </ProtectedRoute>
+        } />
+
 
         <Route path="/job/:id" element={
           <ProtectedRoute>
